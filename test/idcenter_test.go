@@ -1,8 +1,8 @@
 package test
 
 import (
+	"com.startrek/go-idcenter/sequence"
 	dgctx "github.com/darwinOrg/go-common/context"
-	"go-idcenter/sequence"
 	"testing"
 )
 
