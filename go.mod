@@ -1,6 +1,6 @@
 module com.startrek/go-idcenter
 
-go 1.20
+go 1.19
 
 require (
 	github.com/darwinOrg/go-common v0.0.4
