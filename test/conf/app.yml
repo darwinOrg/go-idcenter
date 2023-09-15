@@ -1,0 +1,11 @@
+app:
+  name: local-idcenter-service
+  port: 8080
+  monitor: 19002
+
+mysql:
+  url: root:lvwenlong@tcp(localhost:3306)/whale?charset=utf8mb4&loc=Local&interpolateParams=true&parseTime=true&timeout=1s&readTimeout=2s&writeTimeout=2s
+  idleCons: 5
+  life: 3600
+  size: 15
+  idleTime: 1200
