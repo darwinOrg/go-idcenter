@@ -1,12 +1,12 @@
 package main
 
 import (
+	setting "com.startrek/go-idcenter/settings"
+	"com.startrek/go-idcenter/web"
 	"fmt"
 	"github.com/darwinOrg/go-monitor"
 	"github.com/darwinOrg/go-web/wrapper"
 	"github.com/gin-gonic/gin"
-	setting "go-idcenter/settings"
-	"go-idcenter/web"
 	"log"
 	"os"
 )

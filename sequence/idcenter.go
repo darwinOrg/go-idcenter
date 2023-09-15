@@ -1,13 +1,13 @@
 package sequence
 
 import (
+	"com.startrek/go-idcenter/initilizer"
+	sequence "com.startrek/go-idcenter/sequence/dal"
 	dgctx "github.com/darwinOrg/go-common/context"
 	dgerr "github.com/darwinOrg/go-common/enums/error"
 	dglogger "github.com/darwinOrg/go-logger"
 	"github.com/rolandhe/daog"
 	txrequest "github.com/rolandhe/daog/tx"
-	"go-idcenter/initilizer"
-	sequence "go-idcenter/sequence/dal"
 	"sync"
 )
 

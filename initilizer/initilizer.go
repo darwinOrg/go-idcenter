@@ -1,9 +1,9 @@
 package initilizer
 
 import (
+	setting "com.startrek/go-idcenter/settings"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/rolandhe/daog"
-	setting "go-idcenter/settings"
 )
 
 var GlobalDatasource = initDatasource()

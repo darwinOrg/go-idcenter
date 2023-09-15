@@ -1,10 +1,10 @@
 package web
 
 import (
+	"com.startrek/go-idcenter/sequence"
 	dgctx "github.com/darwinOrg/go-common/context"
 	"github.com/darwinOrg/go-common/result"
 	"github.com/gin-gonic/gin"
-	"go-idcenter/sequence"
 )
 
 type NextIdReq struct {
