@@ -22,14 +22,14 @@ func RegisterAll(engine *gin.Engine) {
 func registerApi(engine *gin.Engine) {
 	apiGroup := engine.Group("/internal/id")
 
-	wrapper.Post(&wrapper.RequestHolder[NextIdReq, *result.Result[*NextIdVO]]{
+	wrapper.Get(&wrapper.RequestHolder[NextIdReq, *result.Result[*NextIdVO]]{
 		RouterGroup:  apiGroup,
 		RelativePath: "/next-id",
 		NonLogin:     true,
 		BizHandler:   NextId,
 	})
 
-	wrapper.Post(&wrapper.RequestHolder[NextIdsReq, *result.Result[*NextIdsVO]]{
+	wrapper.Get(&wrapper.RequestHolder[NextIdsReq, *result.Result[*NextIdsVO]]{
 		RouterGroup:  apiGroup,
 		RelativePath: "/next-ids",
 		NonLogin:     true,
