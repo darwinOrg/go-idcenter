@@ -10,9 +10,8 @@ ENV GO111MODULE=on \
 
 WORKDIR /application
 
-#COPY go.mod , go.sum and download the dependencied
 COPY . .
-RUN go mod download
+RUN go mod tidy
 
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-idcenter main.go
 
