@@ -5,6 +5,7 @@ import (
 	dgctx "github.com/darwinOrg/go-common/context"
 	dgerr "github.com/darwinOrg/go-common/enums/error"
 	"github.com/darwinOrg/go-common/result"
+	dglogger "github.com/darwinOrg/go-logger"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -27,7 +28,7 @@ type NextIdsVO struct {
 }
 
 func NextId(gc *gin.Context, dc *dgctx.DgContext, nextIdReq *NextIdReq) *result.Result[*NextIdVO] {
-	internalCall := isInternalCall(gc)
+	internalCall := isInternalCall(gc, dc)
 	if !internalCall {
 		gc.AbortWithStatus(http.StatusNotFound)
 		return result.FailByError[*NextIdVO](dgerr.ILLEGAL_OPERATION)
@@ -42,7 +43,7 @@ func NextId(gc *gin.Context, dc *dgctx.DgContext, nextIdReq *NextIdReq) *result.
 }
 
 func NextIds(gc *gin.Context, dc *dgctx.DgContext, nextIdsReq *NextIdsReq) *result.Result[*NextIdsVO] {
-	internalCall := isInternalCall(gc)
+	internalCall := isInternalCall(gc, dc)
 	if !internalCall {
 		gc.AbortWithStatus(http.StatusNotFound)
 		return result.FailByError[*NextIdsVO](dgerr.ILLEGAL_OPERATION)
@@ -57,7 +58,9 @@ func NextIds(gc *gin.Context, dc *dgctx.DgContext, nextIdsReq *NextIdsReq) *resu
 }
 
 // isInternalCall 是否内部访问
-func isInternalCall(gc *gin.Context) bool {
-	internalV := gc.GetHeader("internal_val")
-	return internalV == "61057154-c8f4-40af-bf9a-8c85c0c3ac93"
+func isInternalCall(gc *gin.Context, dc *dgctx.DgContext) bool {
+	internalVal := gc.GetHeader("internal_val")
+	dglogger.Debugf(dc, "isInternalCall header internal_val: %s", internalVal)
+
+	return internalVal == "61057154-c8f4-40af-bf9a-8c85c0c3ac93"
 }

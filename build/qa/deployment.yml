@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: qa-go-idcenter
+  name: qa-go-idcenter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qa-go-idcenter
+  strategy: { }
+  template:
+    metadata:
+      annotations:
+        prometheus.io/port: "19002"
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/monitor/prometheus"
+      labels:
+        app: qa-go-idcenter
+    spec:
+      containers:
+        - image: 525143545807.dkr.ecr.eu-central-1.amazonaws.com/qa-go-idcenter:v101
+          name: qa-go-idcenter
+          resources:
+            limits:
+              memory: "400Mi"
+          imagePullPolicy: Always
+          env:
+            - name: profile
+              value: "ENV_GO_PROFILE"
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              port: 8080
+              path: /health
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+      # 应用部署所在节点选择 arm64 或 amd64
+      nodeSelector:
+        kubernetes.io/arch: arm64
+status: { }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: qa-go-idcenter
+  name: qa-go-idcenter-service
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    - name: monitor
+      port: 19002
+      protocol: TCP
+      targetPort: 19002
+  selector:
+    app: qa-go-idcenter
+  type: ClusterIP
+status:
+  loadBalancer: { }
