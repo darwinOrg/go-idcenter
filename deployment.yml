@@ -21,7 +21,7 @@ spec:
         app: qa-go-idcenter
     spec:
       containers:
-        - image: 525143545807.dkr.ecr.eu-central-1.amazonaws.com/qa-go-idcenter:v101
+        - image: registry.cn-shanghai.aliyuncs.com/start_main/idcenter/qa-go-idcenter:1.0
           name: qa-go-idcenter
           resources:
             limits:
