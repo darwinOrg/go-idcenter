@@ -12,8 +12,7 @@ WORKDIR /application
 
 #COPY go.mod , go.sum and download the dependencied
 COPY . .
-RUN go version
-RUN go mod tidy
+RUN go mod download
 
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-idcenter main.go
 
