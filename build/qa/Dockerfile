@@ -1,6 +1,6 @@
 #-alpine：指代镜像比较小
 # FROM public.ecr.aws/bitnami/golang:1.19
-FROM public.ecr.aws/docker/library/golang:1.19 as builder
+FROM golang:1.19 as builder
 
 LABEL stage=gobuilder
 
@@ -21,7 +21,7 @@ RUN go mod download
 
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-whale main.go
 
-FROM public.ecr.aws/ubuntu/ubuntu:22.04_stable
+FROM ubuntu:22.04_stable
 # FROM public.ecr.aws/docker/library/golang:1.19-alpine
 
 WORKDIR /target
