@@ -16,14 +16,14 @@ RUN go mod download
 
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-idcenter main.go
 
-FROM public.ecr.aws/ubuntu/ubuntu:22.04_stable
+#FROM public.ecr.aws/ubuntu/ubuntu:22.04_stable
+#
+#WORKDIR /target
+#
+## 复制编译后的程序
+#COPY --from=builder /application/build/qa-go-idcenter /target/qa-go-idcenter
+#COPY --from=builder /application/conf/ /target/conf
+#COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
-WORKDIR /target
-
-# 复制编译后的程序
-COPY --from=builder /application/build/qa-go-idcenter /target/qa-go-idcenter
-COPY --from=builder /application/conf/ /target/conf
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-
-EXPOSE 8080
-ENTRYPOINT ["/target/qa-go-idcenter"]
+#EXPOSE 8080
+#ENTRYPOINT ["/target/qa-go-idcenter"]
