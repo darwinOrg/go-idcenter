@@ -11,7 +11,7 @@ ENV GO111MODULE=on \
 WORKDIR /application
 
 COPY . .
-RUN go version
+RUN sudo go version
 RUN go mod download
 
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-idcenter main.go
