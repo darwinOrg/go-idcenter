@@ -21,7 +21,7 @@ spec:
         app: qa-go-idcenter
     spec:
       containers:
-        - image: registry-vpc.cn-shanghai.aliyuncs.com/star_main/idcenter:1.0
+        - image: registry.cn-shanghai.aliyuncs.com/star_main/go-id-center:1.0
           name: qa-go-idcenter
           resources:
             limits:
