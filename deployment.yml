@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: qa
   creationTimestamp: null
   labels:
     app: qa-go-idcenter
@@ -49,7 +48,6 @@ status: { }
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: qa
   creationTimestamp: null
   labels:
     app: qa-go-idcenter
