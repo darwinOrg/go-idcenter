@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/golang:1.19 as builder
+FROM registry.cn-shanghai.aliyuncs.com/star_main/idcenter/golang:1.19 as builder
 
 LABEL stage=gobuilder
 
