@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/golang:1.19 as builder
+FROM registry.cn-shanghai.aliyuncs.com/star_base/golang:1.19 as builder
 
 LABEL stage=gobuilder
 
@@ -16,7 +16,6 @@ RUN go mod download
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-idcenter main.go
 
 FROM public.ecr.aws/ubuntu/ubuntu:22.04_stable
-# FROM public.ecr.aws/docker/library/golang:1.19-alpine
 
 WORKDIR /target
 
