@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/golang:1.19.1 as builder
+FROM registry.cn-shanghai.aliyuncs.com/star_base/golang-x86:1.19.1 as builder
 
 LABEL stage=gobuilder
 
@@ -7,7 +7,7 @@ ENV GO111MODULE=on \
     GOPROXY=https://goproxy.cn,direct \
     CGO_ENABLED=0 \
     GOOS=linux    \
-    GOARCH=amd64
+    GOARCH=arm64
 
 WORKDIR /application
 
@@ -17,7 +17,7 @@ RUN go mod download
 
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-idcenter main.go
 
-FROM --platform=arm64 public.ecr.aws/ubuntu/ubuntu:22.04_stable
+FROM registry.cn-shanghai.aliyuncs.com/star_base/ubuntu22:22.04_stable
 
 WORKDIR /target
 
