@@ -17,7 +17,7 @@ RUN go mod download
 
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-idcenter main.go
 
-FROM registry.cn-shanghai.aliyuncs.com/star_base/ubuntu22:22.04_stable
+FROM registry-vpc.cn-shanghai.aliyuncs.com/star_base/golang-arm:1.19.1
 
 WORKDIR /target
 
