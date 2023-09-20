@@ -6,7 +6,8 @@ LABEL stage=gobuilder
 ENV GO111MODULE=on \
     GOPROXY=https://goproxy.cn,direct \
     CGO_ENABLED=0 \
-    GOOS=linux
+    GOOS=linux    \
+    GOARCH=amd64
 
 WORKDIR /application
 
@@ -16,7 +17,7 @@ RUN go mod download
 
 RUN go build -ldflags "-s -w" -o /application/build/qa-go-idcenter main.go
 
-FROM public.ecr.aws/ubuntu/ubuntu:22.04_stable
+FROM --platform=arm64 public.ecr.aws/ubuntu/ubuntu:22.04_stable
 
 WORKDIR /target
 
