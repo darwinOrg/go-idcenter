@@ -21,7 +21,7 @@ spec:
         app: qa-go-idcenter
     spec:
       containers:
-        - image: registry.cn-shanghai.aliyuncs.com/star_main/go-id-center:${DATETIME}
+        - image: registry.cn-shanghai.aliyuncs.com/star_main/go-id-center:${TIMESTAMP}
           name: qa-go-idcenter
           resources:
             limits:
