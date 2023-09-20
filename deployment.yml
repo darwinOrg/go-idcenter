@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: qa-go-idcenter
-  name: qa-go-idcenter
+    app: go-go-id-center
+  name: go-go-id-center
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: qa-go-idcenter
+      app: go-go-id-center
   strategy: { }
   template:
     metadata:
@@ -18,11 +18,11 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/monitor/prometheus"
       labels:
-        app: qa-go-idcenter
+        app: go-go-id-center
     spec:
       containers:
         - image: registry.cn-shanghai.aliyuncs.com/star_main/go-id-center:${TIMESTAMP}
-          name: qa-go-idcenter
+          name: go-go-id-center
           resources:
             limits:
               memory: "400Mi"
@@ -50,8 +50,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: qa-go-idcenter
-  name: qa-go-idcenter-service
+    app: go-go-id-center
+  name: go-id-center-service
 spec:
   ports:
     - name: http
@@ -63,7 +63,7 @@ spec:
       protocol: TCP
       targetPort: 19002
   selector:
-    app: qa-go-idcenter
+    app: go-go-id-center
   type: ClusterIP
 status:
   loadBalancer: { }
