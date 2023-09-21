@@ -25,7 +25,7 @@ spec:
           name: go-id-center
           resources:
             limits:
-              memory: "512Mi"
+              memory: "400Mi"
           imagePullPolicy: Always
           env:
             - name: profile
