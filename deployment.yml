@@ -6,7 +6,7 @@ metadata:
     app: go-id-center
   name: go-id-center
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: go-id-center
