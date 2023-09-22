@@ -21,7 +21,7 @@ spec:
         app: go-id-center
     spec:
       containers:
-        - image: registry.cn-shanghai.aliyuncs.com/star_main/go-id-center:${TIMESTAMP}
+        - image: registry-vpc.cn-shanghai.aliyuncs.com/star_main/go-id-center:${TIMESTAMP}
           name: go-id-center
           resources:
             limits:
