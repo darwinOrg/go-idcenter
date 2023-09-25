@@ -9,6 +9,14 @@ ENV GO111MODULE=on \
     GOOS=linux    \
     GOARCH=arm64
 
+# 设置默认时区
+ENV TZ=Asia/Shanghai
+
+# 安装 tzdata
+RUN apk update \
+    && DEBIAN_FRONTEND=noninteractive apt install -y tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /application
 
 COPY . .
