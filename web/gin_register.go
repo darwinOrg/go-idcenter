@@ -20,7 +20,7 @@ func RegisterAll(engine *gin.Engine) {
 }
 
 func registerApi(engine *gin.Engine) {
-	apiGroup := engine.Group("/internal/id")
+	apiGroup := engine.Group("/internal/v1/id")
 
 	wrapper.Get(&wrapper.RequestHolder[NextIdReq, *result.Result[*NextIdVO]]{
 		RouterGroup:  apiGroup,
