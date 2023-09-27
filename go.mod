@@ -3,10 +3,10 @@ module com.startrek/go-idcenter
 go 1.19
 
 require (
-	github.com/darwinOrg/go-common v0.0.8
+	github.com/darwinOrg/go-common v0.0.9
 	github.com/darwinOrg/go-logger v0.0.1
 	github.com/darwinOrg/go-monitor v0.0.2
-	github.com/darwinOrg/go-web v0.0.1
+	github.com/darwinOrg/go-web v0.0.3
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-sql-driver/mysql v1.7.1
 	github.com/rolandhe/daog v0.0.29
