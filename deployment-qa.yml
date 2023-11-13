@@ -6,7 +6,7 @@ metadata:
     app: qa-go-id-center
   name: qa-go-id-center
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: qa-go-id-center
