@@ -24,6 +24,8 @@ spec:
         - image: registry-vpc.cn-shanghai.aliyuncs.com/star_main/go-id-center:${TIMESTAMP}
           name: go-id-center
           resources:
+            requests:
+              memory: "20Mi"
             limits:
               memory: "50Mi"
           imagePullPolicy: Always
