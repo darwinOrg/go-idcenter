@@ -1,0 +1,11 @@
+app:
+  name: qa-idcenter-service
+  port: 8080
+  monitor: 19002
+
+mysql:
+  url: star_qa:guwsyv-9Kitxi-huscib@tcp(rm-uf6253evb94ony339.mysql.rds.aliyuncs.com:3306)/startrek_qa?charset=utf8mb4&loc=Local&interpolateParams=true&parseTime=true&timeout=1s&readTimeout=2s&writeTimeout=2s
+  idleCons: 5
+  life: 3600
+  size: 15
+  idleTime: 1200
