@@ -32,6 +32,11 @@ spec:
           env:
             - name: profile
               value: ${PROFILE}
+            - name: secret-key
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret-key
+                  key: ${PROFILE}-secret-key
           livenessProbe:
             httpGet:
               scheme: HTTP
