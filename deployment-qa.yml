@@ -32,7 +32,7 @@ spec:
           env:
             - name: profile
               value: ${PROFILE}
-            - name: secret-key
+            - name: SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: my-secret-key
