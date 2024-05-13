@@ -32,20 +32,15 @@ spec:
           env:
             - name: profile
               value: ${PROFILE}
-            - name: SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: my-secret-key
-                  key: ${PROFILE}-secret-key
             - name: STARTREK_DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: my-secret-key
+                  name: ${PROFILE}-app-secret
                   key: ${PROFILE}-startrek-db-user
             - name: STARTREK_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: my-secret-key
+                  name: ${PROFILE}-app-secret
                   key: ${PROFILE}-startrek-db-password
           livenessProbe:
             httpGet:

@@ -2,6 +2,7 @@ package setting
 
 import (
 	"fmt"
+	dgsys "github.com/darwinOrg/go-common/sys"
 	"gopkg.in/yaml.v3"
 	"log"
 	"os"
@@ -43,19 +44,21 @@ func InitSetting() {
 		return
 	}
 
-	// 替换配置文件中的环境变量
-	envMap := make(map[string]string)
-	for _, env := range os.Environ() {
-		pair := strings.SplitN(env, "=", 2)
-		envMap[pair[0]] = pair[1]
-	}
+	if dgsys.IsFormalProfile() {
+		// 替换配置文件中的环境变量
+		envMap := make(map[string]string)
+		for _, env := range os.Environ() {
+			pair := strings.SplitN(env, "=", 2)
+			envMap[pair[0]] = pair[1]
+		}
 
-	re := regexp.MustCompile(`\${(.*?)}`)
-	buff = []byte(re.ReplaceAllStringFunc(string(buff), func(match string) string {
-		envName := match[2 : len(match)-1] // 移除 "${" 和 "}"
-		envValue := envMap[envName]
-		return envValue
-	}))
+		re := regexp.MustCompile(`\${(.*?)}`)
+		buff = []byte(re.ReplaceAllStringFunc(string(buff), func(match string) string {
+			envName := match[2 : len(match)-1] // 移除 "${" 和 "}"
+			envValue := envMap[envName]
+			return envValue
+		}))
+	}
 
 	if err := yaml.Unmarshal(buff, &appConf); err != nil {
 		log.Println(err)
