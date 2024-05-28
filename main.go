@@ -23,6 +23,7 @@ func main() {
 func createEngine() *gin.Engine {
 	engine := wrapper.DefaultEngine()
 	engine.SetTrustedProxies(nil)
+	engine.HandleMethodNotAllowed = true
 	web.RegisterAll(engine)
 	return engine
 }
